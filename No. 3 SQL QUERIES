@@ -1,0 +1,36 @@
+-- 3. Create a sample SQL query involving the join sql statement and the UNION command.--
+
+-- Query for sold vehicles 
+SELECT 
+    vtl.vehicle_id,
+    sv.assured_name,
+    sv.unit_description,
+    sv.vehicle_type,
+    sv.plate_number,
+    COALESCE(sv.price, 'No Price') AS sold_price,
+    COALESCE(sv.buyer_name, 'No Buyer') AS buyer_name,
+    'Sold' AS vehicle_status
+FROM 
+    sold_vehicles sv
+JOIN 
+    renewed_vehicle rv ON sv.unit_description = rv.unit_description
+    AND sv.plate_number = rv.plate_number
+JOIN 
+    vehicle_total_loss vtl ON rv.plate_number = vtl.plate_number
+
+UNION
+
+-- Query for dismantled vehicles
+SELECT 
+    vtl.vehicle_id,
+    dv.assured_name,
+    dv.unit_description,
+    dv.vehicle_type,
+    dv.plate_number,
+    'NULL' AS price,
+    'NULL' AS buyer_name,
+    dv.status AS vehicle_status
+FROM 
+    dismantled_vehicles dv
+JOIN 
+    vehicle_total_loss vtl ON dv.plate_number = vtl.plate_number;
