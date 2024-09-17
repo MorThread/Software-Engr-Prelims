@@ -1,0 +1,146 @@
+DROP TABLE Customers;
+DROP TABLE Orders;
+DROP TABLE Shippings;
+
+
+--------------------------------------CREATE TABLE--------------------------------------
+
+CREATE TABLE vehicle_total_loss (
+    vehicle_id INT PRIMARY KEY,
+    assured_name VARCHAR(50),
+    date_of_loss DATE,
+    reason_of_loss VARCHAR(20),
+    unit_description VARCHAR(100),
+    fuel VARCHAR(10),
+    color VARCHAR(30),
+    vehicle_type VARCHAR(30),
+    plate_number VARCHAR(20),
+    status VARCHAR(30)
+);
+
+
+CREATE TABLE renewed_vehicle (
+    renewed_vehicle_id INT PRIMARY KEY,
+    assured_name VARCHAR(50),
+    unit_description VARCHAR(100),
+    fuel VARCHAR(10),
+    color VARCHAR(30),
+    vehicle_type VARCHAR(30),
+    plate_number VARCHAR(20),
+    status VARCHAR(30),
+    price DECIMAL(15, 2)
+);
+
+
+CREATE TABLE sold_vehicles (
+    sold_vehicle_id INT PRIMARY KEY,
+    assured_name VARCHAR(50),
+    unit_description VARCHAR(100),
+    fuel VARCHAR(10),
+    color VARCHAR(30),
+    vehicle_type VARCHAR(30),
+    plate_number VARCHAR(20),
+    price DECIMAL(15, 2),
+    purchase_description VARCHAR(20),
+    buyer_name VARCHAR(50)
+);
+
+
+CREATE TABLE dismantled_vehicles (
+    dismantled_vehicle_id INT PRIMARY KEY,
+    assured_name VARCHAR(255),
+    unit_description VARCHAR(255),
+    fuel VARCHAR(50),
+    color VARCHAR(50),
+    vehicle_type VARCHAR(50),
+    plate_number VARCHAR(50),
+    status VARCHAR(255)
+);
+
+
+CREATE TABLE recycled_vehicles (
+    dismantled_vehicle_id INT PRIMARY KEY,
+    assured_name VARCHAR(255),
+    unit_description VARCHAR(255),
+    fuel VARCHAR(50),
+    color VARCHAR(50),
+    vehicle_type VARCHAR(50),
+    plate_number VARCHAR(50),
+    status VARCHAR(255)
+);
+
+
+CREATE TABLE on_restoration_vehicles (
+    vehicle_id INT PRIMARY KEY,
+    assured_name VARCHAR(255),
+    unit_description VARCHAR(255),
+    fuel VARCHAR(255),
+    color VARCHAR(255),
+    vehicle_type VARCHAR(255),
+    plate_number VARCHAR(255),
+    status VARCHAR(255)
+);
+
+
+
+INSERT INTO vehicle_total_loss (vehicle_id, assured_name, date_of_loss, reason_of_loss, unit_description, fuel, color, vehicle_type, plate_number, status) VALUES
+(1, 'Robert Whittaker', '2017-07-19', 'collision', '2016 Honda City 1.5 V CVT', 'Gas', 'White', 'Sedan', 'XAN7048', 'Renewed'),
+(2, 'Israel Adesanya', '2018-05-24', 'collision', '2018 Toyota Corolla G 2.0', 'Gas', 'Gray', 'Sedan', 'NBC7670', 'Renewed'),
+(3, 'Khabib Nurmagomedov', '2018-12-24', 'collision', '2017 BMW M3 3.0', 'Gas', 'White', 'Sports car', 'NFE2209', 'Recycled'),
+(4, 'Amanda Nunez', '2019-02-14', 'collision', '2017 Subaru Forester 2.5 AWD A/T', 'Gas', 'Blue', 'SUV', 'NCA4277', 'Recycled'),
+(5, 'Alex Pereira', '2019-08-19', 'collision', '2018 Toyota Land Cruiser V8', 'Diesel', 'Black', 'SUV', 'DAP8979', 'Renewed'),
+(6, 'Anderson Silva', '2019-12-12', 'collision', '2018 Suzuki SV650x', 'Gas', 'White/Black', 'Motorcycle', '609UHE', 'Renewed'),
+(7, 'Mike Tyson', '2020-06-24', 'collision', '2004 Ford Mustang GT V8 5.0', 'Gas', 'Orange', 'Sports car', 'NGS7386', 'Renewed'),
+(8, 'Dricus Duplessis', '2020-07-01', 'collision', '2020 Toyota Vios E 1.3 A/T', 'Gas', 'Black', 'Sedan', 'FAG7449', 'Renewed'),
+(9, 'Ronda Rousy', '2021-03-21', 'collision', '2020 Honda Mobilio RS 1.5 A/T', 'Gas', 'Orange', 'SUV', 'NAN2398', 'Renewed'),
+(10, 'Jiri Prochazka', '2021-06-29', 'flooded', '2021 Husqvarna Svartpilen 401', 'Gas', 'Gray/Black', 'Motorcycle', '462UKS', 'Recycled'),
+(11, 'Khamzat Chimaev', '2021-11-05', 'collision', '2020 Suzuki Ertiga GLX 1.5', 'Gas', 'Purple', 'SUV', 'NFY3800', 'Renewed'),
+(12, 'Wanderlei Silva', '2022-02-08', 'flooded', '2022 Toyota Innova G 2.8', 'Diesel', 'Maroon', 'SUV', 'CAS7971', 'Renewed'),
+(13, 'Cris Cyborg', '2022-04-15', 'collision', '2022 Honda Click 160 FI', 'Gas', 'Matt Red', 'Motorcycle', '742UPL', 'Dismantled'),
+(14, 'Tom Aspinall', '2022-09-19', 'flooded', '2021 Mitsubishi Mirage G4 GLX 1.2G CVT', 'Gas', 'Red', 'Sedan', 'DAI9584', 'Renewed'),
+(15, 'Diego Lopez', '2022-10-27', 'collision', '2022 Kawasaki Z900', 'Gas', 'Green', 'Motorcycle', '589DNY', 'Dismantled'),
+(16, 'Max Holloway', '2023-08-06', 'collision', '2023 Mitsubishi L300 Exceed FB 2.2', 'Diesel', 'White', 'Truck', 'NAI7998', 'Dismantled'),
+(17, 'Illia Topuria', '2023-09-17', 'collision', '2023 Toyota Avanza E 1.3 CVT', 'Gas', 'Blue', 'SUV', 'CAN1368', 'Renewed'),
+(18, 'Demetrious Johnson', '2024-02-26', 'collision', '2023 Toyota Vios XLE 1.3', 'Gas', 'Black', 'Sedan', 'NBA4422', 'Renewed'),
+(19, 'Sean Strickland', '2024-05-18', 'flooded', '2023 Yamaha YZF-R1M', 'Gas', 'Black/Blue', 'Motorcycle', '207QVQ', 'On restoration'),
+(20, 'Jon Jones', '2024-08-16', 'collision', '2024 Ford Ranger Raptor 4x4', 'Diesel', 'Matt Orange', 'SUV', 'ZAC4068', 'On restoration');
+
+
+INSERT INTO renewed_vehicle (renewed_vehicle_id, assured_name, unit_description, fuel, color, vehicle_type, plate_number, status, price) VALUES
+(1, 'Robert Whittaker', '2016 Honda City 1.5 V CVT', 'Gas', 'White', 'Sedan', 'XAN7048', 'Sold', 750000),
+(2, 'Israel Adesanya', '2018 Toyota Corolla G 2.0', 'Gas', 'Gray', 'Sedan', 'NBC7670', 'Sold', 710000),
+(3, 'Alex Pereira', '2018 Toyota Land Cruiser V8', 'Diesel', 'Black', 'SUV', 'DAP8979', 'On Sale', 2700000),
+(4, 'Anderson Silva', '2018 Suzuki SV650x', 'Gas', 'White/Black', 'Motorcycle', '609UHE', 'Sold', 286000),
+(5, 'Mike Tyson', '2004 Ford Mustang GT V8 5.0', 'Gas', 'Orange', 'Sports car', 'NGS7386', 'Sold', 3100000),
+(6, 'Dricus Duplessis', '2020 Toyota Vios E 1.3 A/T', 'Gas', 'Black', 'Sedan', 'FAG7449', 'On Sale', 490000),
+(7, 'Ronda Rousy', '2020 Honda Mobilio RS 1.5 A/T', 'Gas', 'Orange', 'SUV', 'NAN2398', 'On Sale', 620000),
+(8, 'Khamzat Chimaev', '2020 Suzuki Ertiga GLX 1.5', 'Gas', 'Purple', 'SUV', 'NFY3800', 'Sold', 550000),
+(9, 'Wanderlei Silva', '2022 Toyota Innova G 2.8', 'Diesel', 'Maroon', 'SUV', 'CAS7971', 'On Sale', 1280000),
+(10, 'Tom Aspinall', '2021 Mitsubishi Mirage G4 GLX 1.2G CVT', 'Gas', 'Red', 'Sedan', 'DAI9584', 'Sold', 747000),
+(11, 'Illia Topuria', '2023 Toyota Avanza E 1.3 CVT', 'Gas', 'Blue', 'SUV', 'CAN1368', 'On Sale', 925000),
+(12, 'Demetrious Johnson', '2023 Toyota Vios XLE 1.3', 'Gas', 'Black', 'Sedan', 'NBA4422', 'For Pricing Examination', NULL);
+
+
+INSERT INTO sold_vehicles (sold_vehicle_id, assured_name, unit_description, fuel, color, vehicle_type, plate_number, price, purchase_description, buyer_name) VALUES
+(1, 'Robert Whittaker', '2016 Honda City 1.5 V CVT', 'Gas', 'White', 'Sedan', 'XAN7048', 610000.00, 'Installment', 'Reniel Gonzales'),
+(2, 'Israel Adesanya', '2018 Toyota Corolla G 2.0', 'Gas', 'Gray', 'Sedan', 'NBC7670', 710000.00, 'Cash', 'Mon Gonzales'),
+(3, 'Anderson Silva', '2018 Suzuki SV650x', 'Gas', 'White/Black', 'Motorcycle', '609UHE', 286000, 'Cash', 'Kurt Kenji Gonzales'),
+(4, 'Mike Tyson', '2004 Ford Mustang GT V8 5.0', 'Gas', 'Orange', 'Sports car', 'NGS7386', 3000000, 'Cash', 'Jimmy Jenkins'),
+(5, 'Tom Aspinall', '2021 Mitsubishi Mirage G4 GLX 1.2G CVT', 'Gas', 'Red', 'Sedan', 'DAI9584', 700000.00, 'Installment', 'Dep Nguyen');
+
+
+INSERT INTO dismantled_vehicles (dismantled_vehicle_id, assured_name, unit_description, fuel, color, vehicle_type, plate_number, status) VALUES
+(1, 'Cris Cyborg', '2022 Honda Click 160 Fl', 'Gas', 'Matt Red', 'Motorcycle', '742UPL', 'vehicle parts on bidding sale'),
+(2, 'Diego Lopez', '2022 Kawasaki Z900', 'Gas', 'Green', 'Motorcycle', '589DNY', 'vehicle parts on R&D'),
+(3, 'Max Holloway', '2023 Mitsubishi L300 Exceed FB 2.2', 'Diesel', 'White', 'Truck', 'NAI7998', 'vehicle parts on R&D');
+
+
+INSERT INTO recycled_vehicles (dismantled_vehicle_id, assured_name, unit_description, fuel, color, vehicle_type, plate_number, status) VALUES
+(1, 'Khabib Nurmagomedov', '2017 BMW M3 3.0', 'Gas', 'White', 'Sports car', 'NFE2209', 'parts sold in third party'),
+(2, 'Amanda Nunez', '2017 Subaru Forester 2.5 AWD A/T', 'Gas', 'Blue', 'SUV', 'NIC2477', 'parts recycled on other unit'),
+(3, 'Jiri Prochazka', '2021 Husqvarna Svartpilen 401', 'Gas', 'Gray/Black', 'Motorcycle', '462UKS', 'parts recycled on other unit');
+
+
+INSERT INTO on_restoration_vehicles (vehicle_id, assured_name, unit_description, fuel, color, vehicle_type, plate_number, status) VALUES
+(1, 'Sean Strickland', '2023 Yamaha VFZ-R1M', 'Gas', 'Black/Blue', 'Motorcycle', '207QVQ', 'waiting for replacement parts'),
+(2, 'Lion Jones', '2024 Ford Ranger Raptor 4x4', 'Diesel', 'Matt Orange', 'SUV', 'ZAC4068', 'incomplete docs');
