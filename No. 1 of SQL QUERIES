@@ -1,0 +1,14 @@
+--1. Create a sample SQL query involving the join sql statement.--
+SELECT
+    rv.assured_name,
+    rv.unit_description,
+    rv.vehicle_type,
+    rv.plate_number,
+    rv.price AS asking_price,
+    sv.price AS sold_price,
+    sv.purchase_description,
+    sv.buyer_name
+FROM
+    renewed_vehicle rv
+JOIN
+    sold_vehicles sv ON rv.renewed_vehicle_id = sv.sold_vehicle_id;
