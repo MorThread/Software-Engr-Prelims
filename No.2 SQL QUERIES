@@ -1,0 +1,19 @@
+--2. Create a sample SQL query involving the join sql statement and aggregate function.--
+SELECT 
+    sv.sold_vehicle_id,
+    sv.assured_name,
+    sv.unit_description,
+    rv.price AS asking_price,
+    sv.price AS sold_price,
+    (rv.price - sv.price) AS savings
+FROM 
+    sold_vehicles sv
+JOIN 
+    renewed_vehicle rv
+ON 
+    sv.unit_description = rv.unit_description
+    AND sv.plate_number = rv.plate_number
+WHERE 
+    rv.price IS NOT NULL
+    AND sv.price IS NOT NULL
+    AND (rv.price - sv.price) > 0;
