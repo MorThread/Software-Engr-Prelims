@@ -1,0 +1,81 @@
+Table vehicle_total_loss {
+    vehicle_id INT [pk]
+    assured_name VARCHAR(50)
+    date_of_loss DATE
+    reason_of_loss VARCHAR(20)
+    unit_description VARCHAR(100)
+    fuel VARCHAR(10)
+    color VARCHAR(30)
+    vehicle_type VARCHAR(30)
+    plate_number VARCHAR(20)
+    status VARCHAR(30)
+}
+
+Table renewed_vehicle {
+    renewed_vehicle_id INT [pk]
+    vehicle_id INT
+    assured_name VARCHAR(50)
+    unit_description VARCHAR(100)
+    fuel VARCHAR(10)
+    color VARCHAR(30)
+    vehicle_type VARCHAR(30)
+    plate_number VARCHAR(20)
+    status VARCHAR(30)
+    price DECIMAL(15, 2)
+}
+
+Table sold_vehicles {
+    sold_vehicle_id INT [pk]
+    vehicle_id INT
+    assured_name VARCHAR(50)
+    unit_description VARCHAR(100)
+    fuel VARCHAR(10)
+    color VARCHAR(30)
+    vehicle_type VARCHAR(30)
+    plate_number VARCHAR(20)
+    price DECIMAL(15, 2)
+    purchase_description VARCHAR(20)
+    buyer_name VARCHAR(50)
+}
+
+Table dismantled_vehicles {
+    dismantled_vehicle_id INT [pk]
+    vehicle_id INT
+    assured_name VARCHAR(255)
+    unit_description VARCHAR(255)
+    fuel VARCHAR(50)
+    color VARCHAR(50)
+    vehicle_type VARCHAR(50)
+    plate_number VARCHAR(50)
+    status VARCHAR(255)
+}
+
+Table recycled_vehicles {
+    recycled_vehicle_id INT [pk]
+    dismantled_vehicle_id INT
+    assured_name VARCHAR(255)
+    unit_description VARCHAR(255)
+    fuel VARCHAR(50)
+    color VARCHAR(50)
+    vehicle_type VARCHAR(50)
+    plate_number VARCHAR(50)
+    status VARCHAR(255)
+}
+
+Table on_restoration_vehicles {
+    restoration_vehicle_id INT [pk]
+    vehicle_id INT
+    assured_name VARCHAR(255)
+    unit_description VARCHAR(255)
+    fuel VARCHAR(255)
+    color VARCHAR(255)
+    vehicle_type VARCHAR(255)
+    plate_number VARCHAR(255)
+    status VARCHAR(255)
+}
+
+Ref: vehicle_total_loss.vehicle_id > renewed_vehicle.vehicle_id
+Ref: vehicle_total_loss.vehicle_id > sold_vehicles.vehicle_id
+Ref: vehicle_total_loss.vehicle_id > dismantled_vehicles.vehicle_id
+Ref: dismantled_vehicles.dismantled_vehicle_id > recycled_vehicles.dismantled_vehicle_id
+Ref: vehicle_total_loss.vehicle_id > on_restoration_vehicles.vehicle_id
